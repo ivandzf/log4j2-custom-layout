@@ -1,5 +1,6 @@
 # log4j2-custom-layout v1.1
 [![CircleCI](https://circleci.com/gh/ivandzf/log4j2-custom-layout.svg?style=svg)](https://circleci.com/gh/ivandzf/log4j2-custom-layout)
+<br>
 Custom Layout for logging
 
 ## Features
