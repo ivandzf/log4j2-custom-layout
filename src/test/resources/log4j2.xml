@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="log4j-custom-layout">
+    <Appenders>
+        <Console name="customConsole">
+            <CustomConsoleLayout/>
+        </Console>
+        <Console name="customJson">
+            <CustomJsonLayout/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="ALL">
+            <AppenderRef ref="customJson"/>
+        </Root>
+    </Loggers>
+</Configuration>
