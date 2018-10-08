@@ -1,5 +1,6 @@
 # log4j2-custom-layout v1.1
 [![CircleCI](https://circleci.com/gh/ivandzf/log4j2-custom-layout.svg?style=svg)](https://circleci.com/gh/ivandzf/log4j2-custom-layout)
+Custom Layout for logging
 
 ## Features
 * Custom Console Layout
@@ -84,7 +85,7 @@ then the result is
 {"applicationName":"logging-test","ipAddress":"127.0.0.1","port":"9099","level":"DEBUG","thread":"qtp1688150025-32","threadId":32,"loggerName":"org.ivandzf.logging.Application","message":"test custom debug log","test key map":"{\"string key\":\"string value\"}","test key boolean":true,"test key list integers":"[1.0,2.0]","test key":"test value","test key list strings":"[\"1\",\"2\"]"}
 ```
 
-## Kafka Logging to Kibana
+## Kafka Logging on Kibana
 ![Kibana](https://github.com/ivandzf/log4j2-custom-layout/blob/master/img/kibana-result.png)
 
 ### logstash config
