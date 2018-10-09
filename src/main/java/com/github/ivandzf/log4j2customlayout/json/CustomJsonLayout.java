@@ -1,9 +1,10 @@
 package com.github.ivandzf.log4j2customlayout.json;
 
 import com.github.ivandzf.log4j2customlayout.config.LogEnvironment;
+import com.github.ivandzf.log4j2customlayout.message.CustomMessage;
+import com.github.ivandzf.log4j2customlayout.utils.JsonUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.Configuration;
@@ -14,8 +15,6 @@ import org.apache.logging.log4j.core.config.plugins.PluginConfiguration;
 import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.impl.ThrowableProxy;
 import org.apache.logging.log4j.core.layout.AbstractStringLayout;
-import com.github.ivandzf.log4j2customlayout.message.CustomMessage;
-import com.github.ivandzf.log4j2customlayout.utils.JsonUtils;
 import org.apache.logging.log4j.util.Strings;
 
 import java.nio.charset.Charset;
@@ -52,7 +51,7 @@ public class CustomJsonLayout extends AbstractStringLayout {
     @Override
     public String toSerializable(LogEvent event) {
         if (hideEnvironmentWhenNull) {
-            if (!LogEnvironment.isPort()||!LogEnvironment.isIpAddress()||!LogEnvironment.isApplicationName())
+            if (!LogEnvironment.isPort() || !LogEnvironment.isIpAddress() || !LogEnvironment.isApplicationName())
                 return Strings.EMPTY;
         }
 
@@ -93,14 +92,8 @@ public class CustomJsonLayout extends AbstractStringLayout {
         }
 
         // Message
-        if (JsonUtils.isJsonObjectValid(event.getMessage().getFormattedMessage())) {
-            CustomMessage customMessage;
-            try {
-                customMessage = gson.fromJson(event.getMessage().getFormattedMessage(), CustomMessage.class);
-            } catch (JsonParseException e) {
-                throw new JsonParseException("message is not custom message object");
-            }
-
+        CustomMessage customMessage = JsonUtils.generateCustomMessage(event.getMessage().getFormattedMessage());
+        if (customMessage != null) {
             jsonObject.addProperty("message", customMessage.getMessage());
             customMessage.getNewField().forEach((k, v) -> {
                 if (v instanceof String) {

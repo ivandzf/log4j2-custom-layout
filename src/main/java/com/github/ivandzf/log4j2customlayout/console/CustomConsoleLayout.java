@@ -1,9 +1,9 @@
 package com.github.ivandzf.log4j2customlayout.console;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
 import com.github.ivandzf.log4j2customlayout.message.CustomMessage;
 import com.github.ivandzf.log4j2customlayout.utils.JsonUtils;
+import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.Configuration;
@@ -56,14 +56,8 @@ public class CustomConsoleLayout extends AbstractStringLayout {
         stringBuilder.append(event.getLoggerName());
         stringBuilder.append(" - ");
 
-        if (JsonUtils.isJsonObjectValid(event.getMessage().getFormattedMessage())) {
-            CustomMessage customMessage;
-            try {
-                customMessage = gson.fromJson(event.getMessage().getFormattedMessage(), CustomMessage.class);
-            } catch (JsonParseException e) {
-                throw new JsonParseException("message is not custom message object");
-            }
-
+        CustomMessage customMessage = JsonUtils.generateCustomMessage(event.getMessage().getFormattedMessage());
+        if (customMessage != null) {
             if (newFieldName != null) {
                 String[] newFieldNames = newFieldName.split(",");
                 for (String fieldName : newFieldNames) {

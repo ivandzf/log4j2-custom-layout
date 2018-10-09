@@ -16,14 +16,6 @@ public final class LogEnvironment {
     private static String PORT;
     private static String APPLICATION_NAME;
 
-    public static class Builder {
-        public static void build(@NonNull String ipAddress, @NonNull String port, @NonNull String applicationName) {
-            IP_ADDRESS = ipAddress;
-            PORT = port;
-            APPLICATION_NAME = applicationName;
-        }
-    }
-
     public static String getIpAddress() {
         return IP_ADDRESS;
     }
@@ -46,6 +38,14 @@ public final class LogEnvironment {
 
     public static boolean isApplicationName() {
         return APPLICATION_NAME != null;
+    }
+
+    public static class Builder {
+        public static void build(@NonNull String ipAddress, @NonNull String port, @NonNull String applicationName) {
+            IP_ADDRESS = ipAddress;
+            PORT = port;
+            APPLICATION_NAME = applicationName;
+        }
     }
 
 }

@@ -1,8 +1,8 @@
 package com.github.ivandzf.log4j2customlayout.utils;
 
+import com.github.ivandzf.log4j2customlayout.message.CustomMessage;
 import com.google.gson.Gson;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.JsonParseException;
 
 /**
  * log4j2-custom-layout
@@ -24,14 +24,12 @@ public class JsonUtils {
         return gson;
     }
 
-    public static boolean isJsonObjectValid(String message) {
+    public static CustomMessage generateCustomMessage(String message) {
         try {
-            new JSONObject(message);
-        } catch (JSONException ex) {
-            return false;
+            return getGson().fromJson(message, CustomMessage.class);
+        } catch (JsonParseException ex) {
+            return null;
         }
-
-        return true;
     }
 
 }

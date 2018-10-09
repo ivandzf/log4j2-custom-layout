@@ -1,7 +1,7 @@
 package com.github.ivandzf.log4jcustomlayout.utils;
 
-import com.google.gson.Gson;
 import com.github.ivandzf.log4j2customlayout.utils.JsonUtils;
+import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,13 +27,13 @@ public class JsonUtilsTest {
     @Test
     public void isJsonObjectValidTestSuccess() {
         String message = "{\"message\":\"test message\",\"newField\":{\"test key\":\"test value\"}}";
-        Assert.assertTrue(JsonUtils.isJsonObjectValid(message));
+        Assert.assertNotNull(JsonUtils.generateCustomMessage(message));
     }
 
     @Test
     public void isJsonObjectValidTestFailed() {
         String message = "[{\"message\":\"test message\",\"newField\":{\"test key\":\"test value\"}}]";
-        Assert.assertFalse(JsonUtils.isJsonObjectValid(message));
+        Assert.assertNull(JsonUtils.generateCustomMessage(message));
     }
 
 }

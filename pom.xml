@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.ivandzf</groupId>
@@ -15,8 +16,8 @@
         <connection>scm:git:git@github.com:ivandzf/log4j2-custom-layout.git</connection>
         <developerConnection>scm:git:git@github.com:ivandzf/log4j2-custom-layout.git</developerConnection>
         <url>https://github.com/ivandzf/log4j2-custom-layout</url>
-      <tag>log4j2-custom-layout-1.0</tag>
-  </scm>
+        <tag>log4j2-custom-layout-1.0</tag>
+    </scm>
 
     <developers>
         <developer>
@@ -58,12 +59,6 @@
             <artifactId>lombok</artifactId>
             <version>1.16.22</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20171018</version>
         </dependency>
 
         <dependency>
