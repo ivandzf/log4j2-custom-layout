@@ -1,4 +1,4 @@
-# log4j2-custom-layout v1.1
+# log4j2-custom-layout v1.1.0
 [![CircleCI](https://circleci.com/gh/ivandzf/log4j2-custom-layout.svg?style=svg)](https://circleci.com/gh/ivandzf/log4j2-custom-layout)
 <br>
 Custom Layout for logging
@@ -12,7 +12,7 @@ Custom Layout for logging
 <dependency>
     <groupId>com.github.ivandzf</groupId>
     <artifactId>log4j2-custom-layout</artifactId>
-    <version>1.1</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
