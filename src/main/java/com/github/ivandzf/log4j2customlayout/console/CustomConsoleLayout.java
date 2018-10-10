@@ -2,8 +2,6 @@ package com.github.ivandzf.log4j2customlayout.console;
 
 import com.github.ivandzf.log4j2customlayout.message.CustomMessage;
 import com.github.ivandzf.log4j2customlayout.utils.JsonUtils;
-import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.config.Configuration;
@@ -29,7 +27,6 @@ import java.util.Date;
 @Plugin(name = "CustomConsoleLayout", category = Node.CATEGORY, elementType = Layout.ELEMENT_TYPE)
 public class CustomConsoleLayout extends AbstractStringLayout {
 
-    private final Gson gson = new Gson();
     private final String newFieldName;
 
     public CustomConsoleLayout(Configuration config, Charset aCharset, String newFieldName) {

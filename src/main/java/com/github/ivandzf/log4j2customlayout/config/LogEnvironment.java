@@ -12,39 +12,39 @@ import lombok.NonNull;
  */
 public final class LogEnvironment {
 
-    private static String IP_ADDRESS;
-    private static String PORT;
-    private static String APPLICATION_NAME;
+    private static String ipAddress;
+    private static String port;
+    private static String applicationName;
 
     public static String getIpAddress() {
-        return IP_ADDRESS;
+        return ipAddress;
     }
 
     public static String getPort() {
-        return PORT;
+        return port;
     }
 
     public static String getApplicationName() {
-        return APPLICATION_NAME;
+        return applicationName;
     }
 
-    public static boolean isIpAddress() {
-        return IP_ADDRESS != null;
+    public static boolean hasIpAddress() {
+        return ipAddress != null;
     }
 
-    public static boolean isPort() {
-        return PORT != null;
+    public static boolean hasPort() {
+        return port != null;
     }
 
-    public static boolean isApplicationName() {
-        return APPLICATION_NAME != null;
+    public static boolean hasApplicationName() {
+        return applicationName != null;
     }
 
     public static class Builder {
         public static void build(@NonNull String ipAddress, @NonNull String port, @NonNull String applicationName) {
-            IP_ADDRESS = ipAddress;
-            PORT = port;
-            APPLICATION_NAME = applicationName;
+            LogEnvironment.ipAddress = ipAddress;
+            LogEnvironment.port = port;
+            LogEnvironment.applicationName = applicationName;
         }
     }
 

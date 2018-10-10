@@ -51,24 +51,24 @@ public class CustomJsonLayout extends AbstractStringLayout {
     @Override
     public String toSerializable(LogEvent event) {
         if (hideEnvironmentWhenNull) {
-            if (!LogEnvironment.isPort() || !LogEnvironment.isIpAddress() || !LogEnvironment.isApplicationName())
+            if (!LogEnvironment.hasPort() || !LogEnvironment.hasIpAddress() || !LogEnvironment.hasApplicationName())
                 return Strings.EMPTY;
         }
 
         JsonObject jsonObject = new JsonObject();
 
         // Application Name
-        if (LogEnvironment.isApplicationName()) {
+        if (LogEnvironment.hasApplicationName()) {
             jsonObject.addProperty("applicationName", LogEnvironment.getApplicationName());
         }
 
         // Ip Address
-        if (LogEnvironment.isIpAddress()) {
+        if (LogEnvironment.hasIpAddress()) {
             jsonObject.addProperty("ipAddress", LogEnvironment.getIpAddress());
         }
 
         // Port running
-        if (LogEnvironment.isPort()) {
+        if (LogEnvironment.hasPort()) {
             jsonObject.addProperty("port", LogEnvironment.getPort());
         }
 

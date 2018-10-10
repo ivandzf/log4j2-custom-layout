@@ -3,3 +3,4 @@ target
 .idea
 *.releaseBackup
 release.properties
+*.DS_Store
