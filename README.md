@@ -1,4 +1,5 @@
 # log4j2-custom-layout v1.1.0
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/31a675e301f345428a9df2975ac08d36)](https://app.codacy.com/app/ivandzf/log4j2-custom-layout?utm_source=github.com&utm_medium=referral&utm_content=ivandzf/log4j2-custom-layout&utm_campaign=Badge_Grade_Dashboard)
 [![CircleCI](https://circleci.com/gh/ivandzf/log4j2-custom-layout.svg?style=svg)](https://circleci.com/gh/ivandzf/log4j2-custom-layout)
 <br>
 Custom Layout for logging
