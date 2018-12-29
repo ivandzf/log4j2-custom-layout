@@ -14,14 +14,10 @@ import com.google.gson.JsonParseException;
  */
 public class JsonUtils {
 
-    private static Gson gson;
+    private static Gson GSON = new Gson();
 
     public static Gson getGson() {
-        if (gson == null) {
-            gson = new Gson();
-        }
-
-        return gson;
+        return GSON;
     }
 
     public static CustomMessage generateCustomMessage(String message) {
