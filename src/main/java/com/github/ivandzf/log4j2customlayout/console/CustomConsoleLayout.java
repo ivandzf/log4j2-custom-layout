@@ -27,6 +27,8 @@ import java.util.Date;
 @Plugin(name = "CustomConsoleLayout", category = Node.CATEGORY, elementType = Layout.ELEMENT_TYPE)
 public class CustomConsoleLayout extends AbstractStringLayout {
 
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS");
+
     private final String newFieldName;
 
     public CustomConsoleLayout(Configuration config, Charset aCharset, String newFieldName) {
@@ -44,7 +46,7 @@ public class CustomConsoleLayout extends AbstractStringLayout {
     @Override
     public String toSerializable(LogEvent event) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS").format(new Date()));
+        stringBuilder.append(SIMPLE_DATE_FORMAT.format(new Date()));
         stringBuilder.append(" ");
         stringBuilder.append(event.getLevel());
         stringBuilder.append(" [");
