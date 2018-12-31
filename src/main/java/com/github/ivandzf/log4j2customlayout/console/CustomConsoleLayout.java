@@ -13,6 +13,7 @@ import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.layout.AbstractStringLayout;
 
 import java.nio.charset.Charset;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -27,7 +28,21 @@ import java.util.Date;
 @Plugin(name = "CustomConsoleLayout", category = Node.CATEGORY, elementType = Layout.ELEMENT_TYPE)
 public class CustomConsoleLayout extends AbstractStringLayout {
 
-    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS");
+    /**
+     * Avoid syncronization.
+     * </p>
+     * {@link DateFormat} implementation is not thread safe, so give one {@link SimpleDateFormat} instance for each thread.
+     * @see DateFormat
+     * @see SimpleDateFormat
+     */
+    private static final ThreadLocal<DateFormat> DATE_FORMAT_THREAD_LOCAL = new ThreadLocal<DateFormat>() {
+
+        @Override
+        protected DateFormat initialValue() {
+            return new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SS");
+        }
+
+    };
 
     private final String newFieldName;
 
@@ -46,7 +61,7 @@ public class CustomConsoleLayout extends AbstractStringLayout {
     @Override
     public String toSerializable(LogEvent event) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(SIMPLE_DATE_FORMAT.format(new Date()));
+        stringBuilder.append(DATE_FORMAT_THREAD_LOCAL.get().format(new Date()));
         stringBuilder.append(" ");
         stringBuilder.append(event.getLevel());
         stringBuilder.append(" [");
